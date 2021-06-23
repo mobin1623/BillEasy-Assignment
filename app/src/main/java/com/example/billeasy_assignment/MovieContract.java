@@ -9,6 +9,7 @@ public interface MovieContract {
     interface Model{
         interface OnFinishListerner{
             void onFinish(List<Movies> moviesList);
+            void onFinish(Movies movies);
 
             void onFailure(Throwable t);
         }

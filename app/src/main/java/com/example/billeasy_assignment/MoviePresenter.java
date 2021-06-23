@@ -37,6 +37,11 @@ public class MoviePresenter implements MovieContract.Presenter,
     }
 
     @Override
+    public void onFinish(Movies movies) {
+        movieView.saveDataInDB(movies);
+    }
+
+    @Override
     public void onFailure(Throwable t) {
         movieView.onResponseFailure(t);
 

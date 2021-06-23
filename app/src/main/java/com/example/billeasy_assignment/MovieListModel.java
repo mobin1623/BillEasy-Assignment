@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.billeasy_assignment.API.API;
 import com.example.billeasy_assignment.API.ApiClient;
+import com.example.billeasy_assignment.DB.MovieDatabase;
 import com.example.billeasy_assignment.DB.Movies;
 import com.example.billeasy_assignment.Utils.Constants;
 
@@ -22,8 +23,10 @@ class MovieListModel implements MovieContract.Model {
     private Call<String> call;
     private List<Movies> moviesList = new ArrayList<>();
     private Movies movies;
+
     @Override
     public void getMovies(OnFinishListerner listerner) {
+
 
 
         api = ApiClient.getApiClient().create(API.class);
@@ -43,6 +46,8 @@ class MovieListModel implements MovieContract.Model {
                            movies.setTitle(results.getString("title"));
                            movies.setPosterPath(results.getString("poster_path"));
                            moviesList.add(movies);
+                           listerner.onFinish(movies);
+
 
                        }
                        listerner.onFinish(moviesList);
